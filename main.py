@@ -7,29 +7,47 @@ def shorten():
     shortUrl_entry.insert(0, short_url)
 
 def clear():
-    longUrl_entry.insert(0, "")
-    shortUrl_entry.insert(0, "")
+    longUrl_entry.delete(0, ctk.END)
+    shortUrl_entry.delete(0, ctk.END)
 
 root = ctk.CTk()
 root.geometry("750x450")
 root.title("TinyLink - URL Link Shortener App")
 
-longUrl_label = ctk.CTkLabel(root, text="Long Url", font=ctk.CTkFont(size=18, weight="bold"))
-longUrl_label.pack(padx=10, pady=(50,10))
+title_label = ctk.CTkLabel(root, text="TinyLink", font=ctk.CTkFont(size=25, weight="bold"))
+title_label.pack(pady=(30,0))
 
-longUrl_entry = ctk.CTkEntry(root, placeholder_text="Enter Long Url", width=500)
-longUrl_entry.pack(padx=10)
+text_label = ctk.CTkLabel(root, text="Makes long url links to short url links", font=ctk.CTkFont(size=15))
+text_label.pack(pady=(0,20))
 
-shortUrl_label = ctk.CTkLabel(root, text="Short Url", font=ctk.CTkFont(size=18, weight="bold"))
-shortUrl_label.pack(padx=10, pady=(25,10))
+# Long URL Label and Entry
+longUrl_frame = ctk.CTkFrame(root, width=300)
+longUrl_frame.pack(pady=(20,30))
 
-shortUrl_entry = ctk.CTkEntry(root, placeholder_text="Resulting Short Url", width=500)
-shortUrl_entry.pack(padx=10)
+longUrl_label = ctk.CTkLabel(longUrl_frame, text="Long Url", font=ctk.CTkFont(size=18, weight="bold"))
+longUrl_label.pack(side="left", padx=(5,0))
 
-shortButton = ctk.CTkButton(root, text="Convert to short url", width=500, font=ctk.CTkFont(size=15), command=shorten)
-shortButton.pack(pady=(30,10))
+longUrl_entry = ctk.CTkEntry(longUrl_frame, placeholder_text="Enter Long Url", width=400)
+longUrl_entry.pack(side="right", padx=(10, 0))
 
-clearButton = ctk.CTkButton(root, text="Clear the enteries", width=500, font=ctk.CTkFont(size=15), command=clear)
-clearButton.pack(pady=10)
+# Short URL Label and Entry
+shortUrl_frame = ctk.CTkFrame(root, width=300)
+shortUrl_frame.pack()
+
+shortUrl_label = ctk.CTkLabel(shortUrl_frame, text="Short Url", font=ctk.CTkFont(size=18, weight="bold"))
+shortUrl_label.pack(side="left", padx=(5,0))
+
+shortUrl_entry = ctk.CTkEntry(shortUrl_frame, placeholder_text="Resulting Short Url", width=400)
+shortUrl_entry.pack(side="right", padx=(10, 0))
+
+# Buttons
+button_frame = ctk.CTkFrame(root)
+button_frame.pack(pady=30)
+
+shortButton = ctk.CTkButton(button_frame, text="Convert to short url", width=25, font=ctk.CTkFont(size=20), command=shorten)
+shortButton.pack(side="left", padx=(0, 10))
+
+clearButton = ctk.CTkButton(button_frame, text="Clear the entries", width=25, font=ctk.CTkFont(size=20), command=clear)
+clearButton.pack(side="left", padx=(10, 0))
 
 root.mainloop()
