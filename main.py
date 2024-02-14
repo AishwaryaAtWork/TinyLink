@@ -13,7 +13,6 @@ def clear():
 root = ctk.CTk()
 root.geometry("750x450")
 root.title("TinyLink - URL Link Shortener App")
-root.config(background="#edeaea")
 
 title_label = ctk.CTkLabel(root, text="TinyLink", font=ctk.CTkFont(size=28, weight="bold" ), text_color='#088ccd')
 title_label.pack(pady=(30,0))
@@ -22,7 +21,7 @@ text_label = ctk.CTkLabel(root, text="Makes long url links to short url links", 
 text_label.pack(pady=(0,20))
 
 # Long URL Label and Entry
-longUrl_frame = ctk.CTkFrame(root, bg_color='#edeaea')
+longUrl_frame = ctk.CTkFrame(root)
 longUrl_frame.pack(pady=(20,30))
 
 longUrl_label = ctk.CTkLabel(longUrl_frame, text="Long Url", font=ctk.CTkFont(size=18))
@@ -32,7 +31,7 @@ longUrl_entry = ctk.CTkEntry(longUrl_frame, placeholder_text="Enter Long Url", w
 longUrl_entry.pack(side="right", padx=(10, 0))
 
 # Short URL Label and Entry
-shortUrl_frame = ctk.CTkFrame(root, width=300)
+shortUrl_frame = ctk.CTkFrame(root)
 shortUrl_frame.pack()
 
 shortUrl_label = ctk.CTkLabel(shortUrl_frame, text="Short Url", font=ctk.CTkFont(size=18))
@@ -42,7 +41,7 @@ shortUrl_entry = ctk.CTkEntry(shortUrl_frame, placeholder_text="Resulting Short 
 shortUrl_entry.pack(side="right", padx=(10, 0))
 
 # Buttons
-button_frame = ctk.CTkFrame(root, bg_color='#edeaea')
+button_frame = ctk.CTkFrame(root)
 button_frame.pack(pady=30)
 
 shortButton = ctk.CTkButton(button_frame, text="Convert to short url", width=25, font=ctk.CTkFont(size=20), text_color='#fff', command=shorten)
